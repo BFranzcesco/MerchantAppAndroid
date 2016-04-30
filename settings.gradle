@@ -1,1 +1,1 @@
-include ':merchant'
+include ':merchant', ':client'
