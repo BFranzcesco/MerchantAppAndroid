@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String API_BASE_URL = "https://floating-beach-21665.herokuapp.com/";
+    private static final String API_BASE_URL = "https://dry-badlands-78035.herokuapp.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

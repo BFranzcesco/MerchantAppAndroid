@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegistrationIntentService extends IntentService {
 
     private static final String TAG = "RegIntentService";
-    private static final String API_BASE_URL = "https://floating-beach-21665.herokuapp.com/";
+    private static final String API_BASE_URL = "https://dry-badlands-78035.herokuapp.com/";
 
     public RegistrationIntentService() {
         super(TAG);
