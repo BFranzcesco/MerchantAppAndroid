@@ -24,23 +24,29 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
+import android.support.v4.content.LocalBroadcastManager;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
 import fbtm.merchantapp.MainActivity;
 import fbtm.merchantapp.R;
 
-public class MyGcmListenerService extends GcmListenerService {
+import static gcm.NotificationKeys.NOTIFICATION_MESSAGE;
+import static gcm.NotificationKeys.NOTIFICATION_RECEIVED;
 
-    private static final String TAG = "MyGcmListenerService";
+public class MyGcmListenerService extends GcmListenerService {
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
         String message = data.getString("message");
-        Log.d(TAG, "From: " + from);
-        Log.d(TAG, "Message: " + message);
         sendNotification(message);
+        sendNotificationReceivedBroadcast(message);
+    }
+
+    private void sendNotificationReceivedBroadcast(String message) {
+        Intent registrationComplete = new Intent(NOTIFICATION_RECEIVED);
+        registrationComplete.putExtra(NOTIFICATION_MESSAGE,message);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
     }
 
     private void sendNotification(String message) {

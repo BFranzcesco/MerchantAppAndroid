@@ -4,23 +4,24 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-import gcm.QuickstartPreferences;
 import gcm.RegistrationIntentService;
+
+import static gcm.NotificationKeys.NOTIFICATION_MESSAGE;
+import static gcm.NotificationKeys.NOTIFICATION_RECEIVED;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
-    private BroadcastReceiver mRegistrationBroadcastReceiver;
+    private BroadcastReceiver notificationBroadcastReceiver;
     private boolean isReceiverRegistered;
 
     @Override
@@ -28,13 +29,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+        notificationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                SharedPreferences sharedPreferences =
-                        PreferenceManager.getDefaultSharedPreferences(context);
-                boolean sentToken = sharedPreferences
-                        .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
+                String message = intent.getStringExtra(NOTIFICATION_MESSAGE);
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -54,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(notificationBroadcastReceiver);
         isReceiverRegistered = false;
         super.onPause();
     }
 
     private void registerReceiver(){
         if(!isReceiverRegistered) {
-            LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-                    new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
+            LocalBroadcastManager.getInstance(this).registerReceiver(notificationBroadcastReceiver,
+                    new IntentFilter(NOTIFICATION_RECEIVED));
             isReceiverRegistered = true;
         }
     }
