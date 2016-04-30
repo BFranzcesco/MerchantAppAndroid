@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MerchantApp.iml" filepath="$PROJECT_DIR$/MerchantApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/merchant/app.iml" filepath="$PROJECT_DIR$/merchant/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MerchantAppAndroid.iml" filepath="$PROJECT_DIR$/MerchantAppAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/merchant/merchant.iml" filepath="$PROJECT_DIR$/merchant/merchant.iml" />
     </modules>
   </component>
 </project>
