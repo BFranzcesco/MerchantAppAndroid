@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "892868219333",
+    "project_id": "merchantapp-2d66f"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892868219333:android:a489b9db312a383e",
+        "android_client_info": {
+          "package_name": "fbtm.merchantapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1zD4K_7_7LJS3HPhfKxoASEysLpg1COI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
