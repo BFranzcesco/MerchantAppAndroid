@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">ClientApp</string>
-    <string name="order">Order</string>
+    <string name="app_name">PizzaRio</string>
+    <string name="order">Ordina</string>
+    <string name="choose_pizza">Scegli la pizza</string>
 </resources>
