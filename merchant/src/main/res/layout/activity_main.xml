@@ -8,4 +8,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fbtm.merchantapp.MainActivity">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/orders"/>
+
 </RelativeLayout>

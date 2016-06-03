@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -23,17 +23,20 @@ public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver notificationBroadcastReceiver;
     private boolean isReceiverRegistered;
+    private TextView tvmessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tvmessage = (TextView) findViewById(R.id.message);
+
         notificationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String message = intent.getStringExtra(NOTIFICATION_MESSAGE);
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                tvmessage.setText(message);
             }
         };
 
