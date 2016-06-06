@@ -7,10 +7,14 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import gcm.RegistrationIntentService;
 
@@ -23,20 +27,26 @@ public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver notificationBroadcastReceiver;
     private boolean isReceiverRegistered;
-    private TextView tvmessage;
+    private List<String> orderList;
+    private ListView listView;
+    private ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvmessage = (TextView) findViewById(R.id.message);
+        orderList = new ArrayList<>();
+
+        listView = (ListView)findViewById(R.id.orders_list_view);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, orderList);
+        listView.setAdapter(arrayAdapter);
 
         notificationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                String message = intent.getStringExtra(NOTIFICATION_MESSAGE);
-                tvmessage.setText(message);
+                String order = intent.getStringExtra(NOTIFICATION_MESSAGE);
+                updateOrdersListWith(order);
             }
         };
 
@@ -46,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
         }
+    }
+
+    private void updateOrdersListWith(String newOrder) {
+        orderList.add(newOrder);
+        arrayAdapter.notifyDataSetChanged();
     }
 
     @Override
