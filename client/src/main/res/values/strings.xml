@@ -2,4 +2,20 @@
     <string name="app_name">PizzaRio</string>
     <string name="order">Ordina</string>
     <string name="choose_pizza">Scegli la pizza</string>
+    <string name="amount">Quantità</string>
+    <string name="normal">Normale</string>
+    <string name="maxi">Maxi</string>
+    <string name="size">Grandezza</string>
+    <string name="flavor">Gusto</string>
+    <string name="margherita">margherita</string>
+    <string name="next">Next</string>
+
+    <string-array name="amount_numbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
 </resources>
