@@ -7,7 +7,7 @@ public enum PizzaSize {
 
     private String value;
 
-    private PizzaSize(String value) {
+    PizzaSize(String value) {
         this.value = value;
     }
 

@@ -64,8 +64,8 @@ public class SuborderActivity extends AppCompatActivity implements AdapterView.O
         }
     }
 
-    public void next(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void goToOrder(View view) {
+        Intent intent = new Intent(this, OrderActivity.class);
         intent.putExtra("suborder", suborder.getAmount() + " " + suborder.getSize().getValue() + " " + suborder.getFlavor());
         startActivity(intent);
     }

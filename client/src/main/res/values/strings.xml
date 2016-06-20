@@ -9,6 +9,7 @@
     <string name="flavor">Gusto</string>
     <string name="margherita">margherita</string>
     <string name="next">Next</string>
+    <string name="order_sent">Ordine inviato\!</string>
 
     <string-array name="amount_numbers">
         <item>1</item>
